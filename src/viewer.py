@@ -41,11 +41,9 @@ class Viewer(Node):
               ', Renderer', GL.glGetString(GL.GL_RENDERER).decode())
 
         # initialize GL by setting viewport and default render characteristics
-        GL.glClearColor(0.0, 0.0, 1.0, 0.0)
-        GL.glEnable(GL.GL_DEPTH_TEST)  # depth test now enabled (TP2)
-        GL.glEnable(GL.GL_CULL_FACE)  # backface culling enabled (TP2)
-        GL.glEnable(GL.GL_DEPTH_CLAMP)
-
+        GL.glClearColor(0.1, 0.1, 0.1, 0.1)
+        GL.glEnable(GL.GL_DEPTH_TEST)
+        GL.glEnable(GL.GL_CULL_FACE)
         # initialize trackball
         self.trackball = GLFWTrackball(self.win)
 

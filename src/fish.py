@@ -54,7 +54,7 @@ class SeaSnake(Node):
 
 class ReefFish0(Node):
     def __init__(self, shader):
-        super().__init__(transform=(scale(0.05) @ translate(-6.5, -6.5, -20.0) @rotate((0.0, 1.0, 0.0), 80)))
+        super().__init__(transform=(scale(0.5) @ translate(-6.5, -6.5, -20.0) @rotate((0.0, 1.0, 0.0), 80)))
         reef_fish_0_object_text = "res/Fish/ReefFish0/reefFish0_Normal.png"
         reef_fish_0_object = 'res/Fish/ReefFish0/ReefFish0.obj'
         self.add(*load_textured(reef_fish_0_object, shader, reef_fish_0_object_text))
@@ -62,7 +62,7 @@ class ReefFish0(Node):
 
 class ReefFish1(Node):
     def __init__(self, shader):
-        super().__init__(transform=(scale(0.05) @ translate(-12, -6.5, -20.0) @rotate((0.0, 1.0, 0.0), 80)))
+        super().__init__(transform=(scale(0.5) @ translate(-12, -6.5, -20.0) @rotate((0.0, 1.0, 0.0), 80)))
         reef_fish_1_object_text = "res/Fish/ReefFish3/ReefFish3_Base_Color.png"
         reef_fish_1_object = 'res/Fish/ReefFish3/ReefFish3.obj'
         self.add(*load_textured(reef_fish_1_object, shader, reef_fish_1_object_text))

@@ -4,10 +4,12 @@ import glfw  # lean window system wrapper for OpenGL
 from viewer import Viewer
 from skybox import Skybox
 from project.src.fish import BarracuddaFish, SeaSnake, BlueStarFishLoader, ReefFish0, ReefFish1
+from project.src.keyframe import KeyFrameControlNode
+from project.src.nodeModule import Node
 from project.src.shader import Shader
 
 # -------------- Linear Blend Skinning : TP7 ---------------------------------
-from project.src.transform import translate, vec, rotate
+from project.src.transform import translate, vec, rotate, scale, quaternion
 
 MAX_VERTEX_BONES = 4
 MAX_BONES = 128
@@ -101,7 +103,6 @@ void main() {
   out_color = mix(vec4(waterColor,1.0),out_color,visibility);
 
 }
-
 """
 
 
@@ -135,15 +136,31 @@ def init_ReefFish1():
     return fish
 
 
+def init_groupeOfFishs(viewer):
+    ReefFishLeader_transform = Node()
+    ReefFishLeader_transform.add(init_ReefFish0())
+
+    ReefFishFollower_transform = Node()
+    ReefFishFollower_transform.add(init_ReefFish1())
+
+    reefish_group = Node()
+    reefish_group.add(ReefFishLeader_transform, ReefFishFollower_transform)
+    translate_keys = {0: vec(0, 0, 0), 2: vec(1, 0, 0), 4: vec(0, 0, 0)}
+    rotate_keys = {0: quaternion(), 2: quaternion()}
+    scale_keys = {0: 0.1, 2: 0.1, 4: 0.1}
+    keynode = KeyFrameControlNode(translate_keys, rotate_keys, scale_keys)
+    keynode.add(reefish_group)
+    viewer.add(keynode)
+
+
 def main():
     """ create a window, add scene objects, then run rendering loop """
 
     viewer = Viewer(1900, 1200)
     viewer.add((init_BaracuddaFish()))
     viewer.add(init_BlueStarFish())
-    viewer.add(init_SeaSnake())
-    viewer.add_movable(init_ReefFish0())
-    viewer.add_movable(init_ReefFish1())
+    viewer.add_movable(init_SeaSnake())
+    init_groupeOfFishs(viewer)
 
     under_water = [
         'res/skybox/underwater/uw_lf.jpg',
