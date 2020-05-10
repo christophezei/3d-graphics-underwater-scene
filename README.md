@@ -31,6 +31,14 @@ To launch the program you need to run the following command in src dir <b> pytho
 3. C/X/Z for rotation
 4. E/F up and down
 
+# Who did what 
+
+In our team our main strategy is to brain storm everything together and also in the implementation both of us worked on all the tasks mainly since we had many versions of the application then we refactored everything to this final version.
+
 # Replay the animation in the scene
 
 To replay the animation in the scene hit 'space' key
+
+# Possible extension 
+
+After implementing movable objects and animation we thought of implementing collision detection which is really intresting. it caused us a bit of problems so we priortized our work and skipped this task to finish other features, so we think that this is a really usefull feature to add in the future
